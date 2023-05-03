@@ -1,0 +1,2 @@
+# crowdFundingApp 
+Python console app
