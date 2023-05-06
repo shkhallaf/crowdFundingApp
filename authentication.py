@@ -1,27 +1,28 @@
-import re
+import re 
+from termcolor import colored
 def validatePhone(phone):
     while not bool(re.search(r"^01[012][0-9]{8}$", phone)):
-        phone = input("please enter a valid phone number : ")
+        phone = input(colored( "please enter a valid phone number : " , 'green'))
     return phone
 def validatePassword(password):
     passPattern = re.compile(r'^(?=\S{6,20}$)(?=.*?\d)(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[^A-Za-z\s0-9])')
     while not bool(re.search(passPattern, password)):
-        password = input("Please enter a valid Password: ")
-    print("you entered a Valid Password :)")
-    confirmPass = input("Confirm password: ")
+        password = input(colored("Please enter a valid Password: ",'green'))
+    print(colored("you entered a Valid Password :)",'yellow'))
+    confirmPass = input(colored("Confirm password: ",'green'))
     while confirmPass != password:
-        print("Passwords do not match :(")
-        print("Enter password the same as you entered")
-        confirmPass = input("Confirm password: ")
-    print("the passwords are the same :)")
+        print(colored("Passwords do not match :(",'yellow'))
+        print(colored("Enter password the same as you entered","yellow"))
+        confirmPass = input(colored("Confirm password: ",'green'))
+    print(colored("the passwords are the same :)",'yellow'))
     return password
 def validateFname(fname) :
     while not fname.isalpha():
-        fname = input ("Please enter a valid name : ")
+        fname = input (colored("Please enter a valid name : ",'green'))
     return fname
 def validateLname(lname):
     while not lname.isalpha():
-        lname = input ("Please enter a valid name : ")
+        lname = input (colored("Please enter a valid name : ",'green'))
     return lname
 
 
@@ -31,8 +32,8 @@ def validateLname(lname):
     pass
 def validateEmail (email):
     while not bool(re.search(r"^[\w\.\+\-]+\@[\w]+\.[a-z]{2,3}$", email)):
-        email = input ("Please enter a valid Email address: ")
-    print("valid email :) ")
+        email = input (colored("Please enter a valid Email address: ","green" ))
+    print(colored("valid email :) ","yellow"))
     return email
     pass
 def checkUserAndPass(user, password):
@@ -76,32 +77,32 @@ def checkExistenceOfMail(email):
     return
 def login():
     
-    user = input ("Enter User Name : ")
+    user = input (colored("Enter User Name : ",'green'))
     while not user.isalpha():
-        user = input ("Enter User Name : ")
-    password = input("Enter Password : ")
+        user = input (colored("Enter User Name : ",'green'))
+    password = input(colored("Enter Password : ",'green'))
     logedInUser = checkUserAndPass(user, password)
     if logedInUser :
-        print (f"hello {logedInUser} welcome back :) ")
+        print (colored(f"hello {logedInUser} welcome back :) ",'yellow'))
     else:
-        print("Invalid username or password :( ")
+        print(colored("Invalid username or password :( ","yellow"))
 def register():
-    fname = input ("Enter your first name : ")
+    fname = input (colored("Enter your first name : ",'green'))
     fname = validateFname(fname)
-    lname = input ("Enter your last name : ")
+    lname = input (colored("Enter your last name : ","green"))
     lname = validateLname(lname)
-    password =input("Please enter a valid Password: ")
+    password =input(colored("Please enter a valid Password: ",'green'))
     password = validatePassword(password)
-    email = input ("Please enter a valid Email address: ")
+    email = input (colored("Please enter a valid Email address: ",'green'))
     email = validateEmail(email)
     mailAftercheckExistenceOfMail = checkExistenceOfMail(email)
     while mailAftercheckExistenceOfMail:
-        print ("the email Already exists :( ")
-        email= input("Please enter a new email : ")
+        print (colored("the email Already exists :( ","yellow"))
+        email= input(colored("Please enter a new email : ","green"))
         email = validateEmail(email)
         mailAftercheckExistenceOfMail = checkExistenceOfMail(email)
 
-    phone = input("please enter a valid phone number : ")
+    phone = input(colored("please enter a valid phone number : ",'green'))
     phone = validatePhone(phone)
     data = f"{fname},{lname},{email},{password},{phone}\n"
     try:
